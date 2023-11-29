@@ -30,7 +30,9 @@ jobs:
         with:
           path: ~/.npm
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - run: echo ${{ toJSON(steps.cache.outputs) }}
+      - run: echo $JSON
+        env:
+          JSON: ${{ toJSON(steps.cache.outputs) }}
       - name: Install dependencies
         # if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci

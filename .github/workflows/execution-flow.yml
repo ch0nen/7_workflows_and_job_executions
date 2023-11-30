@@ -19,7 +19,9 @@ jobs:
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci --cache .npm
+        run: |
+          npm set cache .npm
+          npm ci
       - name: Lint code
         run: npm run lint
   test:
@@ -38,7 +40,9 @@ jobs:
           JSON: ${{ toJSON(steps.cache.outputs) }}
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci --cache .npm
+        run: |
+          npm set cache .npm
+          npm ci
       - name: Test code
         id: test
         run: npm run test
@@ -62,7 +66,9 @@ jobs:
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci --cache .npm
+        run: |
+          npm set cache .npm
+          npm ci
       - name: Build website
         id: build-website
         run: npm run build

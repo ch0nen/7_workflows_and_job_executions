@@ -5,4 +5,4 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Output information
-        echo "Deploying and uploading..."
+        run: echo "Deploying and uploading..."

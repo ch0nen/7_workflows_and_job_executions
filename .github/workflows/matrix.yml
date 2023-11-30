@@ -5,7 +5,13 @@ jobs:
     strategy:
       matrix:
         node-version: [14, 16, 18]
-        operating-system: [ubuntu-latest, self-hosted]
+        operating-system: [ubuntu-latest, self-hosted, windows-latest]
+        include:
+          - node-version: 20
+            operating-system: ubuntu-latest
+        exclude:
+          - node-version: 14
+            operating-system: windows-latest
     runs-on: ${{ matrix.operating-system }}
     steps:
       - uses: actions/checkout@v4

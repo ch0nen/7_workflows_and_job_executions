@@ -1,0 +1,8 @@
+name: Reusable Deploy
+on: workflow_call
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Output information
+        echo "Deploying and uploading..."
